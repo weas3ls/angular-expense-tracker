@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { MdbNotificationRef, MdbNotificationService } from 'mdb-angular-ui-kit/notification';
+
 import { AuthService } from '../../services/auth.service';
 import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
+import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 
 @Component({
     selector: 'expense-tracker-login',
@@ -11,6 +14,8 @@ import { TokenStorageService } from 'src/app/shared/services/token-storage.servi
     styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+    alertRef: MdbNotificationRef<AlertComponent> | null = null;
+
     loginForm = new FormGroup({
         email: new FormControl(null, {
             validators: [Validators.required, Validators.email],
@@ -32,7 +37,8 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authService: AuthService,
-        private tokenStorageService: TokenStorageService
+        private tokenStorageService: TokenStorageService,
+        private mdbAlertService: MdbNotificationService
     ) {}
 
     ngOnInit(): void {
@@ -51,17 +57,32 @@ export class LoginComponent implements OnInit {
     onSubmit() {
         const { email, password } = this.f;
 
+        // stop here if form is invalid
+        if (this.loginForm.invalid) {
+            if (email.value === '' || password.value === '') {
+                this.alertRef = this.mdbAlertService.open(AlertComponent, {
+                    data: { message: 'Please make sure both fields are filled!', type: 'danger' },
+                    position: 'bottom-right',
+                    stacking: true,
+                });
+            }
+            return;
+        }
+
         this.userNotFound = false;
         this.invalidCredentials = false;
 
         this.authService.login(email.value, password.value).subscribe({
             next: data => {
-                console.log(data);
                 this.tokenStorageService.saveToken(data.accessToken);
                 this.tokenStorageService.saveUser(data);
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
                 this.roles = this.tokenStorageService.getUser().roles;
+
+                this.alertRef = this.mdbAlertService.open(AlertComponent, {
+                    data: { message: `Welcome back, ${data.firstName}!`, type: 'success' },
+                });
 
                 this.router.navigate([this.returnUrl]);
             },

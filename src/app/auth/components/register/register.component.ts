@@ -1,9 +1,11 @@
+import { MdbNotificationRef, MdbNotificationService } from 'mdb-angular-ui-kit/notification';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from './../../services/auth.service';
 import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
+import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 
 @Component({
     selector: 'expense-tracker-register',
@@ -11,6 +13,8 @@ import { TokenStorageService } from 'src/app/shared/services/token-storage.servi
     styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
+    alertRef: MdbNotificationRef<AlertComponent> | null = null;
+
     registrationForm = new FormGroup({
         firstName: new FormControl(null, {
             validators: Validators.required,
@@ -59,7 +63,8 @@ export class RegisterComponent {
     constructor(
         private router: Router,
         private authService: AuthService,
-        private tokenStorageService: TokenStorageService
+        private tokenStorageService: TokenStorageService,
+        private mdbAlertService: MdbNotificationService
     ) {
         if (this.tokenStorageService.getToken()) {
             this.isLoggedIn = true;
@@ -75,6 +80,18 @@ export class RegisterComponent {
     onSubmit() {
         const { firstName, lastName, email, password } = this.f;
 
+        // stop here if form is invalid
+        if (this.registrationForm.invalid) {
+            if (firstName.value === null || lastName.value === null || email.value === null || password.value === null)
+                this.alertRef = this.mdbAlertService.open(AlertComponent, {
+                    data: { message: 'Please make sure all the fields are filled!', type: 'danger' },
+                    position: 'bottom-right',
+                    stacking: true,
+                });
+
+            return;
+        }
+
         this.userAlreadyExists = false;
 
         this.authService.register(firstName.value, lastName.value, email.value, password.value).subscribe({
@@ -85,6 +102,11 @@ export class RegisterComponent {
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
                 this.roles = this.tokenStorageService.getUser().roles;
+
+                this.alertRef = this.mdbAlertService.open(AlertComponent, {
+                    data: { message: `Welcome, ${data.firstName}!`, type: 'success' },
+                });
+
                 this.router.navigate([this.returnUrl]);
             },
             error: err => {
