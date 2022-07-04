@@ -1,0 +1,103 @@
+<div class="col-12 col-md-6 col-lg-7 mx-auto mt-5">
+    <div class="card text-white bg-dark">
+        <div class="card-body px-4">
+            <h5 class="card-title">Register</h5>
+            <div class="d-flex justify-content-center text-danger mt-1">
+                <span *ngIf="userAlreadyExists">User with that email already exists!</span>
+            </div>
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" autocomplete="doNotAutoComplete">
+                <div class="row">
+                    <div class="col-12 my-3">
+                        <mdb-form-control class="form-white my-2">
+                            <input
+                                mdbInput
+                                type="text"
+                                id="firstName"
+                                class="form-control"
+                                formControlName="firstName"
+                                required
+                            />
+                            <label mdbLabel class="form-label" for="firstName">First name</label>
+                            <mdb-error
+                                *ngIf="f['firstName'].invalid && (f['firstName'].dirty || f['firstName'].touched)"
+                            >
+                                {{ validationMessages.firstName.required }}
+                            </mdb-error>
+                            <mdb-success
+                                *ngIf="f['firstName'].valid && (f['firstName'].dirty || f['firstName'].touched)"
+                            >
+                                {{ validationMessages.success }}
+                            </mdb-success>
+                        </mdb-form-control>
+                    </div>
+                    <div class="col-12 my-3">
+                        <mdb-form-control class="form-white my-2">
+                            <input
+                                mdbInput
+                                type="text"
+                                id="lastName"
+                                class="form-control"
+                                formControlName="lastName"
+                                required
+                            />
+                            <label mdbLabel class="form-label" for="lastName">Last name</label>
+                            <mdb-error *ngIf="f['lastName'].invalid && (f['lastName'].dirty || f['lastName'].touched)">
+                                {{ validationMessages.lastName.required }}
+                            </mdb-error>
+                            <mdb-success *ngIf="f['lastName'].valid && (f['lastName'].dirty || f['lastName'].touched)">
+                                {{ validationMessages.success }}
+                            </mdb-success>
+                        </mdb-form-control>
+                    </div>
+                    <div class="col-12 my-3">
+                        <mdb-form-control class="form-white my-2">
+                            <input
+                                mdbInput
+                                type="email"
+                                id="email"
+                                class="form-control"
+                                formControlName="email"
+                                required
+                            />
+                            <label mdbLabel class="form-label" for="email">Email</label>
+                            <mdb-error *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)">
+                                {{ validationMessages.email.required }}
+                            </mdb-error>
+                            <mdb-success *ngIf="f['email'].valid && (f['email'].dirty || f['email'].touched)">
+                                {{ validationMessages.success }}
+                            </mdb-success>
+                        </mdb-form-control>
+                    </div>
+                    <div class="col-12 my-3">
+                        <mdb-form-control class="form-white my-2">
+                            <input
+                                mdbInput
+                                type="password"
+                                id="password"
+                                minlength="8"
+                                formControlName="password"
+                                class="form-control px-3"
+                            />
+                            <label mdbLabel class="form-label" for="password">Password</label>
+                            <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)">
+                                <mdb-error *ngIf="f['password'].errors?.['required']"
+                                    >{{ validationMessages.password.error.required }}
+                                </mdb-error>
+                                <mdb-error *ngIf="f['password'].errors?.['minlength']"
+                                    >{{ validationMessages.password.error.minLength }}
+                                </mdb-error>
+                            </div>
+                            <mdb-success *ngIf="f['password'].valid && (f['password'].dirty || f['password'].touched)">
+                                {{ validationMessages.success }}
+                            </mdb-success>
+                        </mdb-form-control>
+                    </div>
+                </div>
+                <div class="d-flex align-items-end justify-content-between">
+                    <span>Already have an account? <a routerLink="/auth/login">Login!</a></span>
+                    <button class="btn btn-primary float-end" type="submit">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
