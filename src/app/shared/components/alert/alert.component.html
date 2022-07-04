@@ -1,0 +1,10 @@
+<div class="alert alert-{{ type }}" role="alert">
+    {{ message }}
+    <button
+        (click)="notificationRef.close()"
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        *ngIf="dismissable"
+    ></button>
+</div>

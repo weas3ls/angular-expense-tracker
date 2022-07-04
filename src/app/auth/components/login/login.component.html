@@ -10,7 +10,14 @@
                 <div class="row">
                     <div class="col-12 my-3">
                         <mdb-form-control class="form-white">
-                            <input mdbInput type="email" id="email" formControlName="email" class="form-control px-3" />
+                            <input
+                                mdbInput
+                                mdbValidate
+                                type="email"
+                                id="email"
+                                formControlName="email"
+                                class="form-control px-3"
+                            />
                             <label mdbLabel class="form-label" for="email">Email</label>
                         </mdb-form-control>
                     </div>
@@ -18,6 +25,7 @@
                         <mdb-form-control class="form-white">
                             <input
                                 mdbInput
+                                mdbValidate
                                 type="password"
                                 id="password"
                                 formControlName="password"

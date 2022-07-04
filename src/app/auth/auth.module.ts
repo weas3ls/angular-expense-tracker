@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
+import { MdbNotificationModule } from 'mdb-angular-ui-kit/notification';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 
 import { LoginComponent } from './components/login/login.component';
@@ -27,6 +28,13 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [LoginComponent, RegisterComponent],
-    imports: [CommonModule, ReactiveFormsModule, RouterModule.forChild(routes), MdbFormsModule, MdbValidationModule],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        RouterModule.forChild(routes),
+        MdbFormsModule,
+        MdbNotificationModule,
+        MdbValidationModule,
+    ],
 })
 export class AuthModule {}
