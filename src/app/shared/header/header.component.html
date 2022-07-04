@@ -2,12 +2,20 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-scroll navbar-dark bg-dark">
         <div class="container-fluid px-5">
             <a class="navbar-brand" aria-current="page" routerLink="/">Weas3ls' Expense Tracker</a>
-            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarCollapse"
+                aria-controls="navbarCollapse"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
                 <i class="fas fa-bars"></i>
             </button>
             <div mdbDropdown class="btn-group shadow-0" *ngIf="isLoggedIn; else elseBlock">
                 <button type="button" class="btn btn-dark dropdown-toggle" mdbDropdownToggle aria-expanded="false">
-                    User Name
+                    {{ user!.firstName }}
                 </button>
                 <ul mdbDropdownMenu class="dropdown-menu dropdown-menu-dark dropdown-menu-end mt-2">
                     <li><a class="dropdown-item pe-auto" href="#">My Account</a></li>
