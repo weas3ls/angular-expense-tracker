@@ -1,0 +1,37 @@
+<div class="col-12 col-md-8 col-lg-7 mx-auto mt-5">
+    <div class="card text-white bg-dark">
+        <div class="card-body px-4">
+            <h5 class="card-title">Login</h5>
+            <div class="d-flex justify-content-center text-danger mt-1">
+                <span *ngIf="invalidCredentials">Incorrect email or password!</span>
+                <span *ngIf="userNotFound">Account with this email not found!</span>
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-12 my-3">
+                        <mdb-form-control class="form-white">
+                            <input mdbInput type="email" id="email" formControlName="email" class="form-control px-3" />
+                            <label mdbLabel class="form-label" for="email">Email</label>
+                        </mdb-form-control>
+                    </div>
+                    <div class="col-12 my-3">
+                        <mdb-form-control class="form-white">
+                            <input
+                                mdbInput
+                                type="password"
+                                id="password"
+                                formControlName="password"
+                                class="form-control px-3"
+                            />
+                            <label mdbLabel class="form-label" for="password">Password</label>
+                        </mdb-form-control>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-end">
+                    <span>Don't have an account? <a routerLink="/register">Click here to register!</a></span>
+                    <button type="submit" class="btn btn-success">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
