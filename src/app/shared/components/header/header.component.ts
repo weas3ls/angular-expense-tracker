@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { TokenStorageService } from '../services/token-storage.service';
+import { TokenStorageService } from '../../services/token-storage.service';
 import { iUser } from 'src/app/auth/models/user';
 
 @Component({
