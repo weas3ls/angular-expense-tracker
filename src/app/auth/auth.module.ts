@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './components/login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
