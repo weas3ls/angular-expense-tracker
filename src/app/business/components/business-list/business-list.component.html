@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-between mb-3">
+    <h2 class="text-white my-5">My Businesses</h2>
+    <button
+        type="button"
+        class="btn btn-dark btn-lg btn-floating mt-5"
+        mdbTooltip="Create Business"
+        placement="left"
+        (click)="openModal()"
+    >
+        <i class="fas fa-plus-circle"></i>
+    </button>
+</div>
+<div class="list-group list-group-flush">
+    <div class="list-group-item list-group-item-action" aria-current="true" *ngFor="let business of businesses">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">
+                <a routerLink="/business-detail" class="text-white stretched-link">{{ business.business_name }}</a>
+            </h5>
+            <small>Last change ##/##/####</small>
+        </div>
+        <small>{{ business.business_ein }}</small>
+        <p class="mb-1 px-5">
+            {{ business.description }}
+        </p>
+        <small class="d-block">Date founded: {{ business.date_founded }}</small>
+        <small>Number of expenses: {{ business.num_of_expenses }}</small>
+    </div>
+</div>

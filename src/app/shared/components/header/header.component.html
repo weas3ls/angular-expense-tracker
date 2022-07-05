@@ -4,10 +4,19 @@
             <a class="navbar-brand" aria-current="page" routerLink="/">Weas3ls' Expense Tracker</a>
             <ul class="navbar-nav ms-auto" *ngIf="isLoggedIn; else elseBlock">
                 <li mdbDropdown class="nav-item dropdown">
-                    <a mdbDropdownToggle role="button" class="btn btn-outline-dark btn-lg text-white dropdown-toggle" id="navbarDropdownMenuLink">
+                    <a
+                        mdbDropdownToggle
+                        role="button"
+                        class="btn btn-outline-dark btn-lg text-white dropdown-toggle"
+                        id="navbarDropdownMenuLink"
+                    >
                         {{ user!.firstName }}
                     </a>
-                    <ul mdbDropdownMenu class="dropdown-menu dropdown-menu-dark dropdown-menu-md-end" aria-labelledby="navbarDropdownMenuLink">
+                    <ul
+                        mdbDropdownMenu
+                        class="dropdown-menu dropdown-menu-dark dropdown-menu-md-end"
+                        aria-labelledby="navbarDropdownMenuLink"
+                    >
                         <li><a class="dropdown-item" href="#">My Account</a></li>
                         <li>
                             <a class="dropdown-item" (click)="logout()">Logout</a>
@@ -16,7 +25,13 @@
                 </li>
             </ul>
             <ng-template #elseBlock>
-                <button class="navbar-toggler" type="button" (click)="basicNavbar.toggle()" aria-expanded="false" aria-label="Toggle navigation">
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    (click)="basicNavbar.toggle()"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse" mdbCollapse #basicNavbar="mdbCollapse">
