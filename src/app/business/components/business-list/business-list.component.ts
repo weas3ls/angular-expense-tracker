@@ -17,8 +17,8 @@ export class BusinessListComponent implements OnInit {
     user!: iUser;
     businesses: iBusiness[] = [];
 
-    constructor(private modalService: MdbModalService, private tokenStorageService: TokenStorageService) {
-        this.user = this.tokenStorageService.getUser();
+    constructor(private modalService: MdbModalService, private tokenStorage: TokenStorageService) {
+        this.user = this.tokenStorage.getUser();
     }
 
     ngOnInit(): void {}

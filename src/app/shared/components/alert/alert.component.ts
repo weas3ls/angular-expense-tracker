@@ -10,7 +10,7 @@ export class AlertComponent {
     message!: string;
     type!: string;
     dismissable: boolean = false;
-    timer: number = 4500;
+    timer: number = 2500;
 
     constructor(public notificationRef: MdbNotificationRef<AlertComponent>) {
         if (!this.dismissable)

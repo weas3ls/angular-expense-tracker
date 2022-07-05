@@ -63,13 +63,13 @@ export class RegisterComponent {
     constructor(
         private router: Router,
         private authService: AuthService,
-        private tokenStorageService: TokenStorageService,
+        private tokenStorage: TokenStorageService,
         private mdbAlertService: MdbNotificationService
     ) {
-        if (this.tokenStorageService.getToken()) {
+        if (this.tokenStorage.getToken()) {
             this.isLoggedIn = true;
             this.router.navigate([this.returnUrl]);
-            this.roles = this.tokenStorageService.getUser().roles;
+            this.roles = this.tokenStorage.getUser().roles;
         }
     }
 
@@ -96,12 +96,12 @@ export class RegisterComponent {
 
         this.authService.register(firstName.value, lastName.value, email.value, password.value).subscribe({
             next: data => {
-                this.tokenStorageService.saveToken(data.accessToken);
-                this.tokenStorageService.saveUser(data);
+                this.tokenStorage.saveToken(data.accessToken);
+                this.tokenStorage.saveUser(data);
                 this.isRegistrationFailed = false;
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
-                this.roles = this.tokenStorageService.getUser().roles;
+                this.roles = this.tokenStorage.getUser().roles;
 
                 this.alertRef = this.mdbAlertService.open(AlertComponent, {
                     data: { message: `Welcome, ${data.firstName}!`, type: 'success' },

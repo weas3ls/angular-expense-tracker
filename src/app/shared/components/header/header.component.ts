@@ -13,17 +13,17 @@ export class HeaderComponent {
     isLoggedIn = false;
     user!: iUser | null;
 
-    constructor(private tokenStorageService: TokenStorageService, private router: Router) {
-        tokenStorageService.user.subscribe(user => {
+    constructor(private tokenStorage: TokenStorageService, private router: Router) {
+        tokenStorage.user.subscribe(user => {
             this.user = user;
             if (user) this.isLoggedIn = true;
         });
-        this.isLoggedIn = !!this.tokenStorageService.getToken();
+        this.isLoggedIn = !!this.tokenStorage.getToken();
     }
 
     logout() {
         this.isLoggedIn = false;
-        this.tokenStorageService.logout();
+        this.tokenStorage.logout();
         this.router.navigate(['/login']);
     }
 }

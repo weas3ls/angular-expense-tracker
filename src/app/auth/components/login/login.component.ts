@@ -37,17 +37,17 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authService: AuthService,
-        private tokenStorageService: TokenStorageService,
+        private tokenStorage: TokenStorageService,
         private mdbAlertService: MdbNotificationService
     ) {}
 
     ngOnInit(): void {
-        if (this.tokenStorageService.getToken()) {
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] ?? '/businesses';
+        if (this.tokenStorage.getToken()) {
             this.isLoggedIn = true;
             this.router.navigate([this.returnUrl]);
-            this.roles = this.tokenStorageService.getUser().roles;
+            this.roles = this.tokenStorage.getUser().roles;
         }
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] ?? '/businesses';
     }
 
     get f() {
@@ -74,11 +74,11 @@ export class LoginComponent implements OnInit {
 
         this.authService.login(email.value, password.value).subscribe({
             next: data => {
-                this.tokenStorageService.saveToken(data.accessToken);
-                this.tokenStorageService.saveUser(data);
+                this.tokenStorage.saveToken(data.accessToken);
+                this.tokenStorage.saveUser(data);
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
-                this.roles = this.tokenStorageService.getUser().roles;
+                this.roles = this.tokenStorage.getUser().roles;
 
                 this.alertRef = this.mdbAlertService.open(AlertComponent, {
                     data: { message: `Welcome back, ${data.firstName}!`, type: 'success' },
@@ -87,8 +87,14 @@ export class LoginComponent implements OnInit {
                 this.router.navigate([this.returnUrl]);
             },
             error: err => {
-                if (err.status === 401) this.invalidCredentials = true;
-                if (err.status === 404) this.userNotFound = true;
+                if (err.status === 401) {
+                    this.invalidCredentials = true;
+                }
+                if (err.status === 404) {
+                    this.userNotFound = true;
+                    this.loginForm.setErrors({ notUnique: true });
+                }
+                // this.loginForm.setErrors({ email });
                 this.isLoginFailed = true;
             },
         });

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 
 import { MdbDatepickerModule } from 'mdb-angular-ui-kit/datepicker';
 import { MdbSelectModule } from 'mdb-angular-ui-kit/select';
+import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 
 import { BusinessListComponent } from './components/business-list/business-list.component';
 import { BusinessNewComponent } from './components/business-new/business-new.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
         MdbDatepickerModule,
         MdbModalModule,
         MdbSelectModule,
+        MdbTooltipModule,
     ],
 })
 export class BusinessModule {}
