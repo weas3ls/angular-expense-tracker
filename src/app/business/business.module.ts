@@ -4,13 +4,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MdbDatepickerModule } from 'mdb-angular-ui-kit/datepicker';
+import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { MdbSelectModule } from 'mdb-angular-ui-kit/select';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 
 import { BusinessListComponent } from './components/business-list/business-list.component';
 import { BusinessNewComponent } from './components/business-new/business-new.component';
 import { BusinessFormComponent } from './components/business-form/business-form.component';
-import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
+import { BusinessDeleteComponent } from './components/business-delete/business-delete.component';
 
 const routes: Routes = [
     {
@@ -20,7 +21,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [BusinessListComponent, BusinessNewComponent, BusinessFormComponent],
+    declarations: [BusinessListComponent, BusinessNewComponent, BusinessFormComponent, BusinessDeleteComponent],
     imports: [
         CommonModule,
         ReactiveFormsModule,
