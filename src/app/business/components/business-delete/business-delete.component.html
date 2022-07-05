@@ -1,0 +1,18 @@
+<div class="modal-content">
+    <div class="modal-header bg-danger text-white d-flex justify-content-center">
+        <h5 class="h3 modal-title">Delete Business</h5>
+    </div>
+    <div class="modal-body">
+        <p class="h4 text-danger text-center">Are you sure?</p>
+        <small class="text-center text-danger d-block">Deleting your business is permanent and cannot be undone</small>
+        <mdb-form-control class="mt-4">
+            <input mdbInput type="password" name="password" class="form-control" />
+            <label mdbLabel for="password" class="form-label">Password</label>
+        </mdb-form-control>
+        <div class="form-text text-danger">Please enter your password</div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger">Yes</button>
+        <button type="button" class="btn btn-dark" (click)="close()">No</button>
+    </div>
+</div>
