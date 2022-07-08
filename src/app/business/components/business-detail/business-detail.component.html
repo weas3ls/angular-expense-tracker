@@ -1,0 +1,162 @@
+<div class="d-flex justify-content-between mt-5 mb-3">
+    <h2 class="my-auto text-white">Business Details</h2>
+    <span>
+        <button
+            type="button"
+            class="btn btn-dark btn-lg btn-floating d-flex justify-content-end me-0 ms-auto"
+            mdbTooltip="Edit Business!"
+            placement="left"
+            routerLink="/business-edit"
+        >
+            <i class="far fa-edit fa-lg"></i>
+        </button>
+    </span>
+</div>
+<div class="ms-3">
+    <div class="d-flex justify-content-between mb-3">
+        <p class="my-0">Founded MM YYYY in Some Place</p>
+        <p class="my-0">Last edit: ##/##/####</p>
+    </div>
+    <p>Business EID: ##-#######</p>
+    <p>Business Website</p>
+    <p>
+        Business Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex sunt deleniti itaque beatae cum nulla quidem neque nostrum accusamus! Reiciendis ad odit nihil, similique ea dolore deserunt? Totam, molestiae impedit! Lorem ipsum dolor
+        sit amet consectetur adipisicing elit. Odio vel odit quasi, recusandae eos quia maxime ex doloribus similique eligendi fugit esse aspernatur distinctio modi neque adipisci temporibus illo quam?
+    </p>
+</div>
+
+<!-- <div class="ms-3">
+    <div class="d-flex justify-content-between mb-3">
+        <p class="ms-3">
+            Founded {{ business.dateFounded | date: 'MMM YYYY' }} in
+            {{ business.foundedIn | stateFormat }}
+        </p>
+        <p class="my-0">Last edit: {{ business.lastChange | date: 'EEE MMM d, YYYY'}}</p>
+    </div>
+    <p>Business EID: {{ business.ein | einFormat }}</p>
+    <p>Business Website: {{ business.website }}</p>
+    <p>Business Description: {{ business.description }}</p>
+</div>
+-->
+
+<div class="col-12 col-md-8 offset-md-2">
+    <div class="d-flex justify-content-md-between my-4">
+        <span class="d-none d-md-inline"></span>
+        <h4 class="text-white mt-auto">This Week's Expenses</h4>
+        <button type="button" class="btn btn-dark btn-lg btn-floating mt-auto" mdbTooltip="New expense!">
+            <i class="fas fa-plus-circle"></i>
+        </button>
+    </div>
+</div>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+        <div class="card bg-dark h-100">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg" alt="..." class="img-fluid" />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a routerLink="/expense-detail" class="stretched-link text-white">Expense title</a>
+                        </h5>
+                        <small class="text-white">Type</small>
+                        <p>Date Added ##/##/####</p>
+                        <p>Amount $$$$</p>
+                        <p class="card-text">
+                            Description: This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card bg-dark h-100">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg" alt="..." class="img-fluid" />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a routerLink="/expense-detail" class="stretched-link text-white">Expense title</a>
+                        </h5>
+                        <small class="text-white">Type</small>
+                        <p>Date Added ##/##/####</p>
+                        <p>Amount $$$$</p>
+                        <p class="card-text">
+                            Description: This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card bg-dark h-100">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg" alt="..." class="img-fluid" />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a routerLink="/expense-detail" class="stretched-link text-white">Expense title</a>
+                        </h5>
+                        <small class="text-white">Type</small>
+                        <p>Date Added ##/##/####</p>
+                        <p>Amount $$$$</p>
+                        <p class="card-text">
+                            Description: This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card bg-dark h-100">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg" alt="..." class="img-fluid" />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a routerLink="/expense-detail" class="stretched-link text-white">Expense title</a>
+                        </h5>
+                        <small class="text-white">Type</small>
+                        <p>Date Added ##/##/####</p>
+                        <p>Amount $$$$</p>
+                        <p class="card-text">
+                            Description: This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card bg-dark h-100">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg" alt="..." class="img-fluid" />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a routerLink="/expense-detail" class="stretched-link text-white">Expense title</a>
+                        </h5>
+                        <small class="text-white">Type</small>
+                        <p>Date Added ##/##/####</p>
+                        <p>Amount $$$$</p>
+                        <p class="card-text">
+                            Description: This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
