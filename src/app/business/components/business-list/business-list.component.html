@@ -14,16 +14,16 @@
     <div class="list-group-item list-group-item-action" aria-current="true" *ngFor="let business of businesses">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">
-                <a routerLink="/business-detail" class="text-white stretched-link">{{ business.business_name }}</a>
+                <a routerLink="/business-detail" class="text-white stretched-link">{{ business.name }}</a>
             </h5>
             <small>Last change ##/##/####</small>
         </div>
-        <small>{{ business.business_ein }}</small>
+        <small>{{ business.ein }}</small>
         <p class="mb-1 px-5">
             {{ business.description }}
         </p>
-        <small class="d-block">Date founded: {{ business.date_founded }}</small>
-        <small>Number of expenses: {{ business.num_of_expenses }}</small>
+        <small class="d-block">Date founded: {{ business.dateFounded }}</small>
+        <small>Number of expenses: {{ business.numberOfExpenses }}</small>
     </div>
 </div>
 

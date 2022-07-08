@@ -12,16 +12,27 @@ import { BusinessListComponent } from './components/business-list/business-list.
 import { BusinessNewComponent } from './components/business-new/business-new.component';
 import { BusinessFormComponent } from './components/business-form/business-form.component';
 import { BusinessDeleteComponent } from './components/business-delete/business-delete.component';
+import { BusinessDetailComponent } from './components/business-detail/business-detail.component';
 
 const routes: Routes = [
     {
         path: '',
         component: BusinessListComponent,
     },
+    {
+        path: ':slug',
+        component: BusinessDetailComponent,
+    },
 ];
 
 @NgModule({
-    declarations: [BusinessListComponent, BusinessNewComponent, BusinessFormComponent, BusinessDeleteComponent],
+    declarations: [
+        BusinessListComponent,
+        BusinessNewComponent,
+        BusinessFormComponent,
+        BusinessDeleteComponent,
+        BusinessDetailComponent,
+    ],
     imports: [
         CommonModule,
         ReactiveFormsModule,
