@@ -31,6 +31,10 @@ const routes: Routes = [
                 path: 'edit',
                 component: BusinessEditComponent,
             },
+            {
+                path: 'expenses',
+                loadChildren: () => import('../expense/expense.module').then(m => m.ExpenseModule),
+            },
         ],
     },
 ];
