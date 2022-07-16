@@ -1,62 +1,84 @@
-<form action="" name="expense-form">
-    <mdb-form-control [ngClass]="url == '/expense-edit' ? 'form-white' : ''">
-        <mdb-select [filter]="true" (selected)="expensesForm($event)">
+<form [formGroup]="expenseForm" name="expense-form">
+    <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
+        <mdb-select mdbValidate formControlName="type" [filter]="true" (selected)="expensesForm($event)">
             <mdb-option-group *ngFor="let group of groups" [label]="group.name">
-                <mdb-option *ngFor="let option of group.options" [value]="option.value">
-                    {{ option.label }}
+                <mdb-option *ngFor="let option of group.subType" [value]="option.name">
+                    {{ option.name }}
                 </mdb-option>
             </mdb-option-group>
         </mdb-select>
         <label mdbLabel class="form-label">Expense Type</label>
+        <mdb-error *ngIf="f['type'].invalid && (f['type'].dirty || f['type'].touched)">
+            {{ validationMessages.type.required }}
+        </mdb-error>
+        <mdb-success *ngIf="f['type'].valid && (f['type'].dirty || f['type'].touched)">
+            {{ validationMessages.success }}
+        </mdb-success>
     </mdb-form-control>
-    <mdb-form-control class="my-4" [ngClass]="url == '/expense-edit' ? 'form-white' : ''">
-        <input type="text" class="form-control" name="title" mdbInput />
+    <mdb-form-control class="my-4" [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
+        <input mdbValidate mdbInput type="text" class="form-control" formControlName="title" />
         <label for="title" class="form-label" mdbLabel>Title</label>
+        <mdb-error *ngIf="f['title'].invalid && (f['title'].dirty || f['title'].touched)">
+            {{ validationMessages.title.required }}
+        </mdb-error>
+        <mdb-success *ngIf="f['title'].valid && (f['title'].dirty || f['title'].touched)">
+            {{ validationMessages.success }}
+        </mdb-success>
     </mdb-form-control>
-    <div class="input-group my-4" *ngIf="expenseType != 'car_mileage'; else elseBlock">
-        <span class="input-group-text" [ngClass]="url == '/expense-edit' ? 'text-white' : ''">$</span>
+    <div class="input-group my-4" *ngIf="expenseType !== 'car_mileage'; else elseBlock">
+        <span class="input-group-text" [ngClass]="url.endsWith('/edit') ? 'text-white' : ''">$</span>
         <input
+            mdbValidate
+            mdbInput
             type="number"
             class="form-control"
             name="amount"
-            mdbInput
-            [ngStyle]="url == '/expense-edit' ? { background: 'transparent', color: 'white' } : {}"
+            [ngStyle]="url.endsWith('/edit') ? { background: 'transparent', color: 'white' } : {}"
         />
-        <label for="amount" class="input-group-text" [ngClass]="url == '/expense-edit' ? 'text-white' : ''">
+        <label for="amount" class="input-group-text" [ngClass]="url.endsWith('/edit') ? 'text-white' : ''">
             Amount
         </label>
     </div>
     <ng-template #elseBlock>
         <div class="row">
             <div class="col-12 col-lg-8">
-                <mdb-form-control [ngClass]="url == '/expense-edit' ? 'form-white' : ''">
+                <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
                     <input
+                        mdbValidate
+                        mdbInput
                         type="number"
                         class="form-control"
                         name="distance"
-                        mdbInput
                         (keyup)="calculateMileage($event)"
                     />
                     <label for="distance" class="form-label" mdbLabel>Distance</label>
                 </mdb-form-control>
             </div>
             <div class="col-12 col-lg-4 d-flex algin-items-center">
-                <p [ngClass]="url == '/expense-edit' ? 'text-white' : ''" class="my-auto">
+                <p [ngClass]="url.endsWith('/edit') ? 'text-white' : 'text-black-50'" class="my-auto">
                     * 0.56/mile = {{ mileage_cost | currency }}
                 </p>
             </div>
         </div>
     </ng-template>
-    <mdb-form-control class="my-4" [ngClass]="url == '/expense-edit' ? 'form-white' : ''">
-        <textarea class="form-control" name="description" mdbInput rows="3"></textarea>
+    <mdb-form-control class="my-4" [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
+        <textarea mdbValidate mdbInput class="form-control" formControlName="description" rows="3"></textarea>
         <label for="description" class="form-label" mdbLabel>Description</label>
+        <mdb-error *ngIf="f['description'].invalid && (f['description'].dirty || f['description'].touched)">
+            {{ validationMessages.description.required }}
+        </mdb-error>
+        <mdb-success *ngIf="f['description'].valid && (f['description'].dirty || f['description'].touched)">
+            {{ validationMessages.success }}
+        </mdb-success>
     </mdb-form-control>
-    <label class="form-label" [ngClass]="url == '/expense-edit' ? 'text-white' : ''" for="image">Image</label>
+    <label class="form-label" [ngClass]="url.endsWith('/edit') ? 'text-white' : ''" for="image">Image</label>
     <input
+        mdbValidate
+        mdbInput
         type="file"
         class="form-control"
-        [ngClass]="url == '/expense-edit' ? 'text-white' : ''"
-        name="image"
-        [ngStyle]="url == '/expense-edit' ? { background: 'transparent' } : {}"
+        [ngClass]="url.endsWith('/edit') ? 'text-white' : ''"
+        formControlName="image"
+        [ngStyle]="url.endsWith('/edit') ? { background: 'transparent' } : {}"
     />
 </form>
