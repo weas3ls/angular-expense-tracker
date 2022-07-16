@@ -5,5 +5,5 @@ export interface Expense {
     amount: number;
     mileage?: number;
     description: string;
-    image: string;
+    receipt: string;
 }

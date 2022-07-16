@@ -10,8 +10,6 @@ import { expenseTypesGroups } from '../../constants/ExpenseTypeGroups';
     styleUrls: ['./expense-form.component.scss'],
 })
 export class ExpenseFormComponent implements OnInit {
-    expenseType = '';
-
     groups = expenseTypesGroups;
     mileage = '';
     mileage_cost = 0;
@@ -21,10 +19,10 @@ export class ExpenseFormComponent implements OnInit {
     expenseForm: FormGroup = new FormGroup({
         type: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
         title: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
-        amount: new FormControl(0, { validators: [Validators.required], updateOn: 'change' }),
-        mileage: new FormControl(0),
+        amount: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+        distance: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
         description: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
-        image: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+        receipt: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
     });
 
     validationMessages = {
@@ -37,11 +35,14 @@ export class ExpenseFormComponent implements OnInit {
         amount: {
             required: 'Expense amount is required',
         },
+        distance: {
+            required: 'Expense distance is required',
+        },
         description: {
             required: 'Expense description is required',
         },
-        image: {
-            required: 'Expense image is required',
+        receipt: {
+            required: 'Expense receipt is required',
         },
         success: 'Looks good!',
     };
@@ -56,8 +57,16 @@ export class ExpenseFormComponent implements OnInit {
         return this.expenseForm.controls;
     }
 
-    expensesForm(event: any) {
-        this.expenseType = event;
+    setValidations(): void {
+        if (this.f['type'].value === 'Car Mileage') {
+            this.f['distance'].setValidators([Validators.required]);
+            this.f['amount'].setValidators(null);
+        } else {
+            this.f['distance'].setValidators(null);
+            this.f['amount'].setValidators([Validators.required]);
+        }
+        this.f['distance'].updateValueAndValidity();
+        this.f['amount'].updateValueAndValidity();
     }
 
     calculateMileage(event: KeyboardEvent) {

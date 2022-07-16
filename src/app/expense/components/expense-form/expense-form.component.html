@@ -1,6 +1,6 @@
 <form [formGroup]="expenseForm" name="expense-form">
     <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
-        <mdb-select mdbValidate formControlName="type" [filter]="true" (selected)="expensesForm($event)">
+        <mdb-select mdbValidate formControlName="type" [filter]="true" (selected)="setValidations()">
             <mdb-option-group *ngFor="let group of groups" [label]="group.name">
                 <mdb-option *ngFor="let option of group.subType" [value]="option.name">
                     {{ option.name }}
@@ -15,9 +15,9 @@
             {{ validationMessages.success }}
         </mdb-success>
     </mdb-form-control>
-    <mdb-form-control class="my-4" [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
+    <mdb-form-control class="mt-4" [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
         <input mdbValidate mdbInput type="text" class="form-control" formControlName="title" />
-        <label for="title" class="form-label" mdbLabel>Title</label>
+        <label mdbLabel for="title" class="form-label">Title</label>
         <mdb-error *ngIf="f['title'].invalid && (f['title'].dirty || f['title'].touched)">
             {{ validationMessages.title.required }}
         </mdb-error>
@@ -25,22 +25,27 @@
             {{ validationMessages.success }}
         </mdb-success>
     </mdb-form-control>
-    <div class="input-group my-4" *ngIf="expenseType !== 'car_mileage'; else elseBlock">
-        <span class="input-group-text" [ngClass]="url.endsWith('/edit') ? 'text-white' : ''">$</span>
+    <mdb-form-control class="mt-4" *ngIf="f['type'].value !== 'Car Mileage'; else elseBlock">
         <input
             mdbValidate
             mdbInput
             type="number"
             class="form-control"
-            name="amount"
+            formControlName="amount"
             [ngStyle]="url.endsWith('/edit') ? { background: 'transparent', color: 'white' } : {}"
         />
-        <label for="amount" class="input-group-text" [ngClass]="url.endsWith('/edit') ? 'text-white' : ''">
+        <label mdbLabel for="amount" class="form-label" [ngClass]="url.endsWith('/edit') ? 'text-white' : ''">
             Amount
         </label>
-    </div>
+        <mdb-error *ngIf="f['amount'].invalid && (f['amount'].dirty || f['amount'].touched)">
+            {{ validationMessages.amount.required }}
+        </mdb-error>
+        <mdb-success *ngIf="f['amount'].valid && (f['amount'].dirty || f['amount'].touched)">
+            {{ validationMessages.success }}
+        </mdb-success>
+    </mdb-form-control>
     <ng-template #elseBlock>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-12 col-lg-8">
                 <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
                     <input
@@ -48,10 +53,16 @@
                         mdbInput
                         type="number"
                         class="form-control"
-                        name="distance"
+                        formControlName="distance"
                         (keyup)="calculateMileage($event)"
                     />
-                    <label for="distance" class="form-label" mdbLabel>Distance</label>
+                    <label mdbLabel for="distance" class="form-label">Distance</label>
+                    <mdb-error *ngIf="f['distance'].invalid && (f['distance'].dirty || f['distance'].touched)">
+                        {{ validationMessages.distance.required }}
+                    </mdb-error>
+                    <mdb-success *ngIf="f['distance'].valid && (f['distance'].dirty || f['distance'].touched)">
+                        {{ validationMessages.success }}
+                    </mdb-success>
                 </mdb-form-control>
             </div>
             <div class="col-12 col-lg-4 d-flex algin-items-center">
@@ -61,9 +72,9 @@
             </div>
         </div>
     </ng-template>
-    <mdb-form-control class="my-4" [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
+    <mdb-form-control class="mt-4" [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
         <textarea mdbValidate mdbInput class="form-control" formControlName="description" rows="3"></textarea>
-        <label for="description" class="form-label" mdbLabel>Description</label>
+        <label mdbLabel for="description" class="form-label">Description</label>
         <mdb-error *ngIf="f['description'].invalid && (f['description'].dirty || f['description'].touched)">
             {{ validationMessages.description.required }}
         </mdb-error>
@@ -71,14 +82,20 @@
             {{ validationMessages.success }}
         </mdb-success>
     </mdb-form-control>
-    <label class="form-label" [ngClass]="url.endsWith('/edit') ? 'text-white' : ''" for="image">Image</label>
-    <input
-        mdbValidate
-        mdbInput
-        type="file"
-        class="form-control"
-        [ngClass]="url.endsWith('/edit') ? 'text-white' : ''"
-        formControlName="image"
-        [ngStyle]="url.endsWith('/edit') ? { background: 'transparent' } : {}"
-    />
+    <div class="mt-4">
+        <label mdbLabel class="form-label" [ngClass]="url.endsWith('/edit') ? 'text-white' : ''" for="receipt">
+            Receipt
+        </label>
+        <input
+            mdbValidate
+            mdbInput
+            type="file"
+            class="form-control"
+            [ngClass]="url.endsWith('/edit') ? 'text-white' : ''"
+            formControlName="receipt"
+            [ngStyle]="url.endsWith('/edit') ? { background: 'transparent' } : {}"
+            accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"
+            required
+        />
+    </div>
 </form>
