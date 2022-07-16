@@ -13,6 +13,7 @@ import { BusinessNewComponent } from './components/business-new/business-new.com
 import { BusinessFormComponent } from './components/business-form/business-form.component';
 import { BusinessDeleteComponent } from './components/business-delete/business-delete.component';
 import { BusinessDetailComponent } from './components/business-detail/business-detail.component';
+import { BusinessEditComponent } from './components/business-edit/business-edit.component';
 
 const routes: Routes = [
     {
@@ -21,7 +22,16 @@ const routes: Routes = [
     },
     {
         path: ':slug',
-        component: BusinessDetailComponent,
+        children: [
+            {
+                path: '',
+                component: BusinessDetailComponent,
+            },
+            {
+                path: 'edit',
+                component: BusinessEditComponent,
+            },
+        ],
     },
 ];
 
@@ -32,6 +42,7 @@ const routes: Routes = [
         BusinessFormComponent,
         BusinessDeleteComponent,
         BusinessDetailComponent,
+        BusinessEditComponent,
     ],
     imports: [
         CommonModule,

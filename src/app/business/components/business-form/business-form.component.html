@@ -1,13 +1,13 @@
 <form action="" name="business-form" (ngSubmit)="onSubmit()">
     <div class="row my-4">
-        <div class="col-12" [ngClass]="url == '/business-edit' ? 'col-lg-10' : 'col-lg-9'">
-            <mdb-form-control [ngClass]="url == '/business-edit' ? 'form-white' : ''">
+        <div class="col-12" [ngClass]="url.endsWith('/edit') ? 'col-lg-10' : 'col-lg-9'">
+            <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
                 <input type="text" class="form-control" name="name" mdbInput mdbValidate autofocus />
                 <label for="name" class="form-label" mdbLabel>Business Name</label>
             </mdb-form-control>
         </div>
-        <div class="col-12" [ngClass]="url == '/business-edit' ? 'col-lg-2' : 'col-lg-3'">
-            <mdb-form-control [ngClass]="url == '/business-edit' ? 'form-white' : ''">
+        <div class="col-12" [ngClass]="url.endsWith('/edit') ? 'col-lg-2' : 'col-lg-3'">
+            <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
                 <input type="number" class="form-control" name="ein" mdbInput mdbValidate />
                 <label for="ein" class="form-label" mdbLabel>Business EIN</label>
             </mdb-form-control>
@@ -15,7 +15,7 @@
     </div>
     <div class="row my-4">
         <div class="col-12 col-lg-8">
-            <mdb-form-control [ngClass]="url == '/business-edit' ? 'form-white' : ''">
+            <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
                 <input
                     mdbInput
                     mdbValidate
@@ -30,7 +30,7 @@
             </mdb-form-control>
         </div>
         <div class="col-12 col-lg-4">
-            <mdb-form-control [ngClass]="url == '/business-edit' ? 'form-white' : ''">
+            <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
                 <mdb-select [filter]="true" name="state-founded">
                     <mdb-option *ngFor="let option of states" [value]="option.abbreviation">
                         {{ option.name }}
@@ -39,18 +39,19 @@
                 <label
                     for="state-founded"
                     class="form-label"
-                    [ngClass]="url == '/business-edit' ? '' : 'text-black-50'"
+                    [ngClass]="url.endsWith('/edit') ? '' : 'text-black-50'"
                     mdbLabel
-                    >Founded In</label
                 >
+                    Founded In
+                </label>
             </mdb-form-control>
         </div>
     </div>
-    <mdb-form-control [ngClass]="url == '/business-edit' ? 'form-white' : ''" class="my-4">
+    <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''" class="my-4">
         <input type="url" class="form-control" name="business-website" mdbInput mdbValidate />
         <label for="business-website" class="form-label" mdbLabel>Business Website</label>
     </mdb-form-control>
-    <mdb-form-control [ngClass]="url == '/business-edit' ? 'form-white' : ''">
+    <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
         <textarea class="form-control" name="business-description" mdbInput mdbValidate rows="3"></textarea>
         <label for="business-description" class="form-label" mdbLabel>Description</label>
     </mdb-form-control>
