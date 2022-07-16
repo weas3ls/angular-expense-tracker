@@ -1,0 +1,62 @@
+<form action="" name="expense-form">
+    <mdb-form-control [ngClass]="url == '/expense-edit' ? 'form-white' : ''">
+        <mdb-select [filter]="true" (selected)="expensesForm($event)">
+            <mdb-option-group *ngFor="let group of groups" [label]="group.name">
+                <mdb-option *ngFor="let option of group.options" [value]="option.value">
+                    {{ option.label }}
+                </mdb-option>
+            </mdb-option-group>
+        </mdb-select>
+        <label mdbLabel class="form-label">Expense Type</label>
+    </mdb-form-control>
+    <mdb-form-control class="my-4" [ngClass]="url == '/expense-edit' ? 'form-white' : ''">
+        <input type="text" class="form-control" name="title" mdbInput />
+        <label for="title" class="form-label" mdbLabel>Title</label>
+    </mdb-form-control>
+    <div class="input-group my-4" *ngIf="expenseType != 'car_mileage'; else elseBlock">
+        <span class="input-group-text" [ngClass]="url == '/expense-edit' ? 'text-white' : ''">$</span>
+        <input
+            type="number"
+            class="form-control"
+            name="amount"
+            mdbInput
+            [ngStyle]="url == '/expense-edit' ? { background: 'transparent', color: 'white' } : {}"
+        />
+        <label for="amount" class="input-group-text" [ngClass]="url == '/expense-edit' ? 'text-white' : ''">
+            Amount
+        </label>
+    </div>
+    <ng-template #elseBlock>
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <mdb-form-control [ngClass]="url == '/expense-edit' ? 'form-white' : ''">
+                    <input
+                        type="number"
+                        class="form-control"
+                        name="distance"
+                        mdbInput
+                        (keyup)="calculateMileage($event)"
+                    />
+                    <label for="distance" class="form-label" mdbLabel>Distance</label>
+                </mdb-form-control>
+            </div>
+            <div class="col-12 col-lg-4 d-flex algin-items-center">
+                <p [ngClass]="url == '/expense-edit' ? 'text-white' : ''" class="my-auto">
+                    * 0.56/mile = {{ mileage_cost | currency }}
+                </p>
+            </div>
+        </div>
+    </ng-template>
+    <mdb-form-control class="my-4" [ngClass]="url == '/expense-edit' ? 'form-white' : ''">
+        <textarea class="form-control" name="description" mdbInput rows="3"></textarea>
+        <label for="description" class="form-label" mdbLabel>Description</label>
+    </mdb-form-control>
+    <label class="form-label" [ngClass]="url == '/expense-edit' ? 'text-white' : ''" for="image">Image</label>
+    <input
+        type="file"
+        class="form-control"
+        [ngClass]="url == '/expense-edit' ? 'text-white' : ''"
+        name="image"
+        [ngStyle]="url == '/expense-edit' ? { background: 'transparent' } : {}"
+    />
+</form>
