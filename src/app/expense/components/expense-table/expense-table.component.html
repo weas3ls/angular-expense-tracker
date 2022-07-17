@@ -35,7 +35,7 @@
         <tbody class="datatable-body">
             <tr *ngFor="let data of table.data" scope="row" class="position-relative">
                 <td>
-                    <a class="text-white stretched-link" routerLink="/expense-detail">{{ data.title }}</a>
+                    <a class="text-white stretched-link" [routerLink]="[data.id]">{{ data.title }}</a>
                 </td>
                 <td>{{ data.type }}<br />{{ data.subType }}</td>
                 <td>{{ data.date | date: 'EEE MMM d, YYYY' }}</td>
