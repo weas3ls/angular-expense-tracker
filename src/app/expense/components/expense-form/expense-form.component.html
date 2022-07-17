@@ -15,16 +15,48 @@
             {{ validationMessages.success }}
         </mdb-success>
     </mdb-form-control>
-    <mdb-form-control class="mt-4" [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
-        <input mdbValidate mdbInput type="text" class="form-control" formControlName="title" />
-        <label mdbLabel for="title" class="form-label">Title</label>
-        <mdb-error *ngIf="f['title'].invalid && (f['title'].dirty || f['title'].touched)">
-            {{ validationMessages.title.required }}
-        </mdb-error>
-        <mdb-success *ngIf="f['title'].valid && (f['title'].dirty || f['title'].touched)">
-            {{ validationMessages.success }}
-        </mdb-success>
-    </mdb-form-control>
+    <div class="row mt-4">
+        <div class="col-12 col-md-7 col-lg-8">
+            <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
+                <input mdbValidate mdbInput type="text" class="form-control" formControlName="title" />
+                <label mdbLabel for="title" class="form-label">Title</label>
+                <mdb-error *ngIf="f['title'].invalid && (f['title'].dirty || f['title'].touched)">
+                    {{ validationMessages.title.required }}
+                </mdb-error>
+                <mdb-success *ngIf="f['title'].valid && (f['title'].dirty || f['title'].touched)">
+                    {{ validationMessages.success }}
+                </mdb-success>
+            </mdb-form-control>
+        </div>
+        <div class="col-12 col-md-5 col-lg-4">
+            <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
+                <input
+                    mdbValidate
+                    mdbInput
+                    [mdbDatepicker]="datepicker"
+                    type="text"
+                    class="form-control"
+                    id="exampleDatepicker"
+                    (focus)="datepicker.open()"
+                    required
+                />
+                <label mdbLabel for="exampleDatepicker" class="form-label">Select a date</label>
+                <mdb-datepicker-toggle [icon]="'fas fa-calendar'" [mdbDatepicker]="datepicker"></mdb-datepicker-toggle>
+                <mdb-datepicker
+                    [maxDate]="maxDate"
+                    [inline]="true"
+                    [format]="'ddd, mmm dd, yyyy'"
+                    #datepicker
+                ></mdb-datepicker>
+                <mdb-error *ngIf="f['date'].invalid && (f['date'].dirty || f['date'].touched)">
+                    {{ validationMessages.date.required }}
+                </mdb-error>
+                <mdb-success *ngIf="f['date'].valid && (f['date'].dirty || f['date'].touched)">
+                    {{ validationMessages.success }}
+                </mdb-success>
+            </mdb-form-control>
+        </div>
+    </div>
     <mdb-form-control class="mt-4" *ngIf="f['type'].value !== 'Car Mileage'; else elseBlock">
         <input
             mdbValidate
