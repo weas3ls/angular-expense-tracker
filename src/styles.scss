@@ -46,6 +46,26 @@ input:-webkit-autofill:active {
     -webkit-text-fill-color: white !important;
 }
 
-.modal-title {
-    color: #4f4f4f;
+.datatable .select-arrow {
+    color: white !important;
+}
+
+.datatable-pagination-button {
+    color: white;
+}
+
+.select-input.form-control[readonly]:not([disabled]) {
+    color: white;
+}
+
+.modal-body .select-input.form-control[readonly]:not([disabled]) {
+    color: #000;
+}
+
+.datatable-sort-icon.active {
+    color: white;
+}
+
+.modal-body .select ~ .form-label {
+    color: #4f4f4f !important;
 }
