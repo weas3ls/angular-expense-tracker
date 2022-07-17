@@ -20,7 +20,7 @@ export class ExpenseFormComponent implements OnInit {
     expenseForm: FormGroup = new FormGroup({
         type: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
         title: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
-        date: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+        date: new FormControl('', { validators: [Validators.required], updateOn: 'submit' }),
         amount: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
         distance: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
         description: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),

@@ -1,0 +1,55 @@
+<mdb-form-control class="form-white">
+    <input
+        mdbInput
+        type="text"
+        id="advanced-search"
+        class="form-control"
+        id="search-input"
+        #searchInput
+        (keydown.enter)="search($event)"
+    />
+    <label mdbLabel for="search-input" class="form-label">Search</label>
+</mdb-form-control>
+<div class="datatable mt-4">
+    <table
+        class="table datatable-table align-middle"
+        mdbTable
+        mdbTableSort
+        #table="mdbTable"
+        #sort="mdbTableSort"
+        [dataSource]="dataSource"
+        [sort]="sort"
+        [sm]="true"
+        [pagination]="pagination"
+    >
+        <caption class="text-white py-1">
+            All expenses for this business
+        </caption>
+        <thead class="datatable-header">
+            <tr>
+                <th *ngFor="let header of headers" [mdbTableSortHeader]="header" scope="col">
+                    {{ header }}
+                </th>
+            </tr>
+        </thead>
+        <tbody class="datatable-body">
+            <tr *ngFor="let data of table.data" scope="row" class="position-relative">
+                <td>
+                    <a class="text-white stretched-link" routerLink="/expense-detail">{{ data.title }}</a>
+                </td>
+                <td>{{ data.type }}<br />{{ data.subType }}</td>
+                <td>{{ data.date | date: 'EEE MMM d, YYYY' }}</td>
+                <td>{{ data.amount | currency }}</td>
+                <td class="text-wrap">{{ data.description | truncate }}</td>
+                <td class="text-center">
+                    <a routerLink="/expense-edit" class="btn btn-dark btn-floating mx-2" mdbTooltip="Edit">
+                        <i class="fas fa-pencil-alt"></i>
+                    </a>
+                    <!-- <a class="btn btn-danger btn-floating mx-2" mdbTooltip="Delete" (click)="openModal()"><i class="fas fa-trash-alt"></i -->
+                    <!-- ></a> -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <mdb-table-pagination #pagination></mdb-table-pagination>
+</div>
