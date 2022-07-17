@@ -36,11 +36,11 @@
                     [mdbDatepicker]="datepicker"
                     type="text"
                     class="form-control"
-                    id="exampleDatepicker"
+                    formControlName="date"
                     (focus)="datepicker.open()"
                     required
                 />
-                <label mdbLabel for="exampleDatepicker" class="form-label">Select a date</label>
+                <label mdbLabel for="date" class="form-label">Expense date</label>
                 <mdb-datepicker-toggle [icon]="'fas fa-calendar'" [mdbDatepicker]="datepicker"></mdb-datepicker-toggle>
                 <mdb-datepicker
                     [maxDate]="maxDate"
