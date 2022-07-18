@@ -1,10 +1,11 @@
 import { dataSource } from './../../constants/DummyExpenseData';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { MdbTableDirective } from 'mdb-angular-ui-kit/table';
 
 import { Expense } from '../../models/expense';
+import { ExpenseDeleteComponent } from '../expense-delete/expense-delete.component';
 
 @Component({
     selector: 'expense-tracker-expense-table',
@@ -14,15 +15,15 @@ import { Expense } from '../../models/expense';
 export class ExpenseTableComponent implements OnInit {
     @ViewChild('table') table!: MdbTableDirective<Expense>;
 
-    // modalRef!: MdbModalRef<ExpenseDeleteComponent>;
+    modalRef!: MdbModalRef<ExpenseDeleteComponent>;
 
     constructor(private modalService: MdbModalService) {}
 
-    // openModal() {
-    //     this.modalRef = this.modalService.open(ExpenseDeleteComponent, {
-    //         modalClass: 'modal-dialog-centered modal-sm',
-    //     });
-    // }
+    openModal() {
+        this.modalRef = this.modalService.open(ExpenseDeleteComponent, {
+            modalClass: 'modal-sm',
+        });
+    }
 
     dataSource = dataSource;
 
