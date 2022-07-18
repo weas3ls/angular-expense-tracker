@@ -1,9 +1,9 @@
-import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
-import { AuthService } from './../../../auth/services/auth.service';
 import { Component, OnInit } from '@angular/core';
+
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
-import { iUser } from 'src/app/auth/models/user';
+
 import { iBusiness } from '../../models/business';
+import { ExpenseNewComponent } from 'src/app/expense/components/expense-new/expense-new.component';
 
 @Component({
     selector: 'expense-tracker-business-detail',
@@ -12,8 +12,15 @@ import { iBusiness } from '../../models/business';
 })
 export class BusinessDetailComponent implements OnInit {
     business!: iBusiness;
+    modalRef!: MdbModalRef<ExpenseNewComponent>;
 
-    constructor() {}
+    constructor(private modalService: MdbModalService) {}
 
     ngOnInit(): void {}
+
+    openModal() {
+        this.modalRef = this.modalService.open(ExpenseNewComponent, {
+            modalClass: 'modal-dialog-centered modal-lg',
+        });
+    }
 }
