@@ -17,6 +17,7 @@ import { ExpenseFormComponent } from './components/expense-form/expense-form.com
 import { ExpenseListComponent } from './components/expense-list/expense-list.component';
 import { ExpenseNewComponent } from './components/expense-new/expense-new.component';
 import { ExpenseTableComponent } from './components/expense-table/expense-table.component';
+import { ExpenseDeleteComponent } from './components/expense-delete/expense-delete.component';
 
 const routes: Routes = [
     {
@@ -41,6 +42,7 @@ const routes: Routes = [
         ExpenseNewComponent,
         ExpenseTableComponent,
         ExpenseDetailComponent,
+        ExpenseDeleteComponent,
     ],
     imports: [
         CommonModule,
