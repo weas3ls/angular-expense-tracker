@@ -1,4 +1,4 @@
-<form [formGroup]="expenseForm" name="expense-form">
+<form [formGroup]="expenseForm" name="expense-form" class="mb-4">
     <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
         <mdb-select mdbValidate formControlName="type" [filter]="true" (selected)="setValidations()">
             <mdb-option-group *ngFor="let group of groups" [label]="group.name">
@@ -114,10 +114,10 @@
             {{ validationMessages.success }}
         </mdb-success>
     </mdb-form-control>
-    <div class="mt-4">
-        <label mdbLabel class="form-label" [ngClass]="url.endsWith('/edit') ? 'text-white' : ''" for="receipt">
-            Receipt
-        </label>
+    <label mdbLabel class="form-label mt-4" [ngClass]="url.endsWith('/edit') ? 'text-white' : ''" for="receipt">
+        Receipt
+    </label>
+    <mdb-form-control>
         <input
             mdbValidate
             mdbInput
@@ -129,5 +129,11 @@
             accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"
             required
         />
-    </div>
+        <mdb-error *ngIf="f['receipt'].invalid && (f['receipt'].dirty || f['receipt'].touched)">
+            {{ validationMessages.receipt.required }}
+        </mdb-error>
+        <mdb-success *ngIf="f['receipt'].valid && (f['receipt'].dirty || f['receipt'].touched)">
+            {{ validationMessages.success }}
+        </mdb-success>
+    </mdb-form-control>
 </form>

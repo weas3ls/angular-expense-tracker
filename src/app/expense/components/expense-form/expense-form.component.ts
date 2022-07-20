@@ -24,7 +24,7 @@ export class ExpenseFormComponent implements OnInit {
         amount: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
         distance: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
         description: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
-        receipt: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+        receipt: new FormControl('', { validators: [Validators.required], updateOn: 'submit' }),
     });
 
     validationMessages = {
