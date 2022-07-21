@@ -1,4 +1,3 @@
-import { dataSource } from './../../constants/DummyExpenseData';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
@@ -6,6 +5,7 @@ import { MdbTableDirective } from 'mdb-angular-ui-kit/table';
 
 import { Expense } from '../../models/expense';
 import { ExpenseDeleteComponent } from '../expense-delete/expense-delete.component';
+import { dataSource } from './../../constants/DummyExpenseData';
 
 @Component({
     selector: 'expense-tracker-expense-table',

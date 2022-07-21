@@ -3,8 +3,8 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
 </div>
 <div class="modal-body">
-    <expense-tracker-business-form></expense-tracker-business-form>
+    <expense-tracker-business-form #businessForm></expense-tracker-business-form>
 </div>
 <div class="modal-footer">
-    <button type="submit" class="btn btn-success" form="business-form">Save</button>
+    <button type="button" class="btn btn-success" (click)="businessForm.onSubmit()">Save</button>
 </div>
