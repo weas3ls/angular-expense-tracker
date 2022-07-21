@@ -80,4 +80,8 @@ export class ExpenseFormComponent implements OnInit {
         this.mileage = (event.target as HTMLInputElement)?.value;
         this.mileage_cost = +this.mileage * this.cost_per_mile;
     }
+
+    onSubmit() {
+        console.log(this.expenseForm.value);
+    }
 }

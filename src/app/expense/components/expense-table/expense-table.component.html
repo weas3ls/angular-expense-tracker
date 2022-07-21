@@ -42,7 +42,7 @@
                 <td>{{ data.amount | currency }}</td>
                 <td class="text-wrap">{{ data.description | truncate: 51 }}</td>
                 <td class="text-center">
-                    <a routerLink="/expense-edit" class="btn btn-dark btn-floating mx-2" mdbTooltip="Edit">
+                    <a [routerLink]="[data.id, 'edit']" class="btn btn-dark btn-floating mx-2" mdbTooltip="Edit">
                         <i class="fas fa-pencil-alt"></i>
                     </a>
                     <a class="btn btn-danger btn-floating mx-2" mdbTooltip="Delete" (click)="openModal()">

@@ -1,0 +1,6 @@
+<h2 class="text-white my-5">Edit Expense</h2>
+<expense-tracker-expense-form #expenseForm></expense-tracker-expense-form>
+<div class="my-4 justify-content-between d-flex">
+    <button type="button" class="btn btn-danger btn-lg" (click)="openModal()">Delete</button>
+    <button type="button" class="btn btn-success btn-lg" (click)="expenseForm.onSubmit()">Save</button>
+</div>
