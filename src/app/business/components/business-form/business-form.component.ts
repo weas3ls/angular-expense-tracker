@@ -1,11 +1,13 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { filter, map, Observable, startWith, Subject, tap } from 'rxjs';
 
 import { iUser } from 'src/app/auth/models/user';
-import { stateSelect } from 'src/app/shared/constants/stateSelect';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
+import { states } from 'src/app/shared/constants/states';
+import { iState } from 'src/app/shared/models/state';
 
 @Component({
     selector: 'expense-tracker-business-form',
@@ -13,7 +15,10 @@ import { TokenStorageService } from 'src/app/shared/services/token-storage.servi
     styleUrls: ['./business-form.component.scss'],
 })
 export class BusinessFormComponent implements OnInit {
-    states = stateSelect;
+    states = states;
+    filteredStates: Observable<iState[]> | undefined;
+    notFound = false;
+
     user!: iUser;
     url = '';
     maxDate = new Date();
@@ -53,6 +58,20 @@ export class BusinessFormComponent implements OnInit {
         private el: ElementRef
     ) {
         this.user = this.tokenStorage.getUser();
+
+        this.filteredStates = this.f['foundedIn'].valueChanges.pipe(
+            startWith(''),
+            map((value: string) => this._filterStates(value)),
+            tap((results: iState[]) => (results.length > 0 ? (this.notFound = false) : (this.notFound = true)))
+        );
+    }
+
+    private _filterStates(value: string): iState[] {
+        const filterValue = value.toLowerCase();
+
+        if (filterValue) return this.states.filter((item: iState) => item.name.toLowerCase().includes(filterValue));
+
+        return this.states;
     }
 
     ngOnInit(): void {
@@ -66,6 +85,7 @@ export class BusinessFormComponent implements OnInit {
 
     onSubmit() {
         console.log('hello');
+        console.log(this.f);
         if (this.businessForm.invalid) {
             for (const key of Object.keys(this.f)) {
                 if (this.f[key].invalid) {

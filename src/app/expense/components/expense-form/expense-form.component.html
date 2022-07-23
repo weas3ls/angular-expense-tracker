@@ -1,12 +1,13 @@
 <form [formGroup]="expenseForm">
     <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white my-5' : 'my-4'">
-        <mdb-select mdbValidate formControlName="type" [filter]="true" (selected)="setValidations()">
-            <mdb-option-group *ngFor="let group of groups" [label]="group.name">
-                <mdb-option *ngFor="let option of group.subType" [value]="option.name">
-                    {{ option.name }}
-                </mdb-option>
-            </mdb-option-group>
-        </mdb-select>
+        <input
+            mdbValidate
+            mdbInput
+            formControlName="type"
+            [mdbAutocomplete]="autocomplete"
+            type="text"
+            class="form-control"
+        />
         <label mdbLabel class="form-label required">Expense Type</label>
         <mdb-error *ngIf="f['type'].invalid && (f['type'].dirty || f['type'].touched)">
             {{ validationMessages.type.required }}
@@ -15,6 +16,22 @@
             {{ validationMessages.success }}
         </mdb-success>
     </mdb-form-control>
+
+    <mdb-autocomplete
+        #autocomplete="mdbAutocomplete"
+        [displayValue]="displayValue"
+        [listHeight]="290"
+        [optionHeight]="58"
+    >
+        <mdb-option *ngFor="let expenseType of filteredExpenseTypes | async" [value]="expenseType">
+            <div class="autocomplete-custom-item-content">
+                <div class="autocomplete-custom-item-title">{{ expenseType.name }}</div>
+                <div class="autocomplete-custom-item-subtitle">{{ expenseType.type }}</div>
+            </div>
+        </mdb-option>
+        <div *ngIf="notFound" class="autocomplete-no-results">No results found</div>
+    </mdb-autocomplete>
+
     <div class="row" [ngClass]="url.endsWith('/edit') ? 'my-5' : 'my-4'">
         <div class="col-12 col-md-7 col-lg-8">
             <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">

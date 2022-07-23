@@ -1,4 +1,6 @@
-export const stateSelect = [
+import { iState } from '../models/state';
+
+export const states: iState[] = [
     {
         abbreviation: 'AL',
         name: 'Alabama',

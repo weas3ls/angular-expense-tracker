@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { map, Observable, startWith, tap } from 'rxjs';
 
-import { expenseTypesGroups } from '../../constants/ExpenseTypeGroups';
+import { expenseTypes } from '../../constants/ExpenseTypes';
 
 @Component({
     selector: 'expense-tracker-expense-form',
@@ -10,7 +11,11 @@ import { expenseTypesGroups } from '../../constants/ExpenseTypeGroups';
     styleUrls: ['./expense-form.component.scss'],
 })
 export class ExpenseFormComponent implements OnInit {
-    groups = expenseTypesGroups;
+    expenseTypes: { name: string; type: string }[] = [];
+
+    filteredExpenseTypes: Observable<{ name: string; type: string }[]> | undefined;
+    notFound = false;
+
     mileage = '';
     mileage_cost = 0;
     cost_per_mile = 0.56;
@@ -18,12 +23,12 @@ export class ExpenseFormComponent implements OnInit {
     maxDate = new Date();
 
     expenseForm = new FormGroup({
-        type: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
-        title: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+        type: new FormControl('', [Validators.required]),
+        title: new FormControl('', [Validators.required]),
         date: new FormControl('', { validators: [Validators.required], updateOn: 'submit' }),
-        amount: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
-        distance: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
-        description: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
+        amount: new FormControl('', [Validators.required]),
+        distance: new FormControl('', [Validators.required]),
+        description: new FormControl('', [Validators.required]),
         receipt: new FormControl('', { validators: [Validators.required], updateOn: 'submit' }),
     });
 
@@ -52,7 +57,30 @@ export class ExpenseFormComponent implements OnInit {
         success: 'Looks good!',
     };
 
-    constructor(private router: Router) {}
+    constructor(private router: Router, private el: ElementRef) {
+        expenseTypes.forEach(type =>
+            type.subType.forEach(subType => this.expenseTypes?.push({ name: subType.name, type: type.name }))
+        );
+
+        this.filteredExpenseTypes = this.f['type'].valueChanges.pipe(
+            startWith(''),
+            map((value: string) => this._filterExpenseTypes(value)),
+            tap((results: { name: string; type: string }[]) =>
+                results.length > 0 ? (this.notFound = false) : (this.notFound = true)
+            )
+        );
+    }
+
+    private _filterExpenseTypes(value: string) {
+        const filterValue = value.toLowerCase();
+
+        if (filterValue) return this.expenseTypes.filter(type => type.name.toLowerCase().includes(filterValue));
+        return this.expenseTypes;
+    }
+
+    displayValue(value: { name: string; type: string }): string {
+        return value ? value.name : '';
+    }
 
     ngOnInit(): void {
         this.url = this.router.url;
@@ -84,5 +112,14 @@ export class ExpenseFormComponent implements OnInit {
 
     onSubmit() {
         console.log(this.expenseForm.value);
+        if (this.expenseForm.invalid) {
+            for (const key of Object.keys(this.f)) {
+                if (this.f[key].invalid) {
+                    const invalidControl = this.el.nativeElement.querySelector(`[formControlName=${key}]`);
+                    invalidControl.focus();
+                    break;
+                }
+            }
+        }
     }
 }

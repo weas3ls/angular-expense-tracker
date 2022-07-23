@@ -1,6 +1,6 @@
-import { ExpenseType } from '../models/expense-type';
+import { iExpenseType } from '../models/expense-type';
 
-export const expenseTypesGroups: ExpenseType[] = [
+export const expenseTypes: iExpenseType[] = [
     {
         name: 'Business',
         subType: [

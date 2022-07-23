@@ -55,11 +55,14 @@
         </div>
         <div class="col-12 col-lg-3">
             <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
-                <mdb-select mdbValidate [filter]="true" formControlName="foundedIn">
-                    <mdb-option *ngFor="let option of states" [value]="option.abbreviation">
-                        {{ option.name }}
-                    </mdb-option>
-                </mdb-select>
+                <input
+                    mdbValidate
+                    mdbInput
+                    formControlName="foundedIn"
+                    [mdbAutocomplete]="autocomplete"
+                    type="text"
+                    class="form-control"
+                />
                 <label mdbLabel class="form-label required">Founded In</label>
                 <mdb-error *ngIf="f['foundedIn'].invalid && (f['foundedIn'].dirty || f['foundedIn'].touched)">
                     {{ validationMessages.foundedIn.required }}
@@ -68,6 +71,12 @@
                     {{ validationMessages.success }}
                 </mdb-success>
             </mdb-form-control>
+            <mdb-autocomplete #autocomplete="mdbAutocomplete">
+                <mdb-option *ngFor="let option of filteredStates | async" [value]="option.name">
+                    {{ option.name }}
+                </mdb-option>
+                <div *ngIf="notFound" class="autocomplete-no-results">No results found</div>
+            </mdb-autocomplete>
         </div>
         <div class="col-12 col-lg-5">
             <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">

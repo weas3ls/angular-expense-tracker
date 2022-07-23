@@ -1,6 +1,6 @@
-export interface ExpenseType {
+import { iExpenseSubType } from './expense-sub-type';
+
+export interface iExpenseType {
     name: string;
-    subType: {
-        name: string;
-    }[];
+    subType: iExpenseSubType[];
 }

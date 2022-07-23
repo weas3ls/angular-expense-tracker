@@ -3,9 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { MdbAutocompleteModule } from 'mdb-angular-ui-kit/autocomplete';
 import { MdbDatepickerModule } from 'mdb-angular-ui-kit/datepicker';
+import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
-import { MdbSelectModule } from 'mdb-angular-ui-kit/select';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 
@@ -53,9 +54,10 @@ const routes: Routes = [
         CommonModule,
         ReactiveFormsModule,
         RouterModule.forChild(routes),
+        MdbAutocompleteModule,
         MdbDatepickerModule,
+        MdbFormsModule,
         MdbModalModule,
-        MdbSelectModule,
         MdbTooltipModule,
         MdbValidationModule,
     ],
