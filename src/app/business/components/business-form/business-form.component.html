@@ -1,5 +1,5 @@
 <form [formGroup]="businessForm" (ngSubmit)="onSubmit()">
-    <div class="row my-5">
+    <div class="row" [ngClass]="url.endsWith('/edit') ? 'my-5' : 'my-4'">
         <div class="col-12 col-lg-9">
             <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
                 <input mdbValidate mdbInput type="text" class="form-control" formControlName="name" required />
@@ -25,7 +25,7 @@
             </mdb-form-control>
         </div>
     </div>
-    <div class="row my-5">
+    <div class="row" [ngClass]="url.endsWith('/edit') ? 'my-5' : 'my-4'">
         <div class="col-12 col-lg-4">
             <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
                 <input
