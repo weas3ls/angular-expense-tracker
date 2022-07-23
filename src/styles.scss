@@ -69,3 +69,8 @@ input:-webkit-autofill:active {
 .modal-body .select ~ .form-label {
     color: #4f4f4f !important;
 }
+
+.required:after {
+    content: ' *';
+    color: red;
+}

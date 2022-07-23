@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     isLoggedIn = false;
     isLoginFailed = false;
     returnUrl = '/';
-    roles: string[] = [];
+    roles = [];
     invalidCredentials = false;
     userNotFound = false;
 

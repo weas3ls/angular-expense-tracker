@@ -15,9 +15,9 @@ export class ExpenseFormComponent implements OnInit {
     mileage_cost = 0;
     cost_per_mile = 0.56;
     url = '';
-    maxDate!: Date;
+    maxDate = new Date();
 
-    expenseForm: FormGroup = new FormGroup({
+    expenseForm = new FormGroup({
         type: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
         title: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
         date: new FormControl('', { validators: [Validators.required], updateOn: 'submit' }),
@@ -56,7 +56,6 @@ export class ExpenseFormComponent implements OnInit {
 
     ngOnInit(): void {
         this.url = this.router.url;
-        this.maxDate = new Date();
         this.maxDate.setDate(this.maxDate.getDate() + 1);
     }
 
@@ -68,9 +67,11 @@ export class ExpenseFormComponent implements OnInit {
         if (this.f['type'].value === 'Car Mileage') {
             this.f['distance'].setValidators([Validators.required]);
             this.f['amount'].setValidators(null);
+            this.f['amount'].reset();
         } else {
             this.f['distance'].setValidators(null);
             this.f['amount'].setValidators([Validators.required]);
+            this.f['distance'].reset();
         }
         this.f['distance'].updateValueAndValidity();
         this.f['amount'].updateValueAndValidity();

@@ -7,6 +7,7 @@ import { MdbDatepickerModule } from 'mdb-angular-ui-kit/datepicker';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { MdbSelectModule } from 'mdb-angular-ui-kit/select';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
+import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 
 import { BusinessListComponent } from './components/business-list/business-list.component';
 import { BusinessNewComponent } from './components/business-new/business-new.component';
@@ -56,6 +57,7 @@ const routes: Routes = [
         MdbModalModule,
         MdbSelectModule,
         MdbTooltipModule,
+        MdbValidationModule,
     ],
 })
 export class BusinessModule {}

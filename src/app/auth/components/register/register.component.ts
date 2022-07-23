@@ -57,7 +57,7 @@ export class RegisterComponent {
     isLoggedIn = false;
     isLoginFailed = false;
     isRegistrationFailed = false;
-    roles: string[] = [];
+    roles = [];
     userAlreadyExists = false;
 
     constructor(

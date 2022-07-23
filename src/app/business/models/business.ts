@@ -6,7 +6,7 @@ export interface iBusiness {
     dateFounded: Date;
     lastChange: Date;
     foundedIn: string;
-    website: string;
+    website?: string;
     description: string;
     numberOfExpenses: number;
 }

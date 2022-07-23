@@ -7,13 +7,13 @@ import { MdbNotificationRef } from 'mdb-angular-ui-kit/notification';
     styleUrls: ['./alert.component.scss'],
 })
 export class AlertComponent {
-    message!: string;
-    type!: string;
-    dismissable: boolean = false;
-    timer: number = 2500;
+    message = '';
+    type = 'success';
+    dismissible = false;
+    timer = 2500;
 
     constructor(public notificationRef: MdbNotificationRef<AlertComponent>) {
-        if (!this.dismissable)
+        if (!this.dismissible)
             setTimeout(() => {
                 this.notificationRef.close();
             }, this.timer);
