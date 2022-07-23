@@ -26,7 +26,7 @@ export class BusinessFormComponent implements OnInit {
     businessForm = new FormGroup({
         name: new FormControl('', [Validators.required]),
         ein: new FormControl('', [Validators.required]),
-        dateFounded: new FormControl('', [Validators.required]),
+        dateFounded: new FormControl('', { validators: [Validators.required], updateOn: 'submit' }),
         foundedIn: new FormControl('', [Validators.required]),
         website: new FormControl(''),
         description: new FormControl('', [Validators.required]),
