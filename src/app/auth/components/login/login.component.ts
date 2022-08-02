@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MdbNotificationRef, MdbNotificationService } from 'mdb-angular-ui-kit/notification';
 
 import { AuthService } from '../../services/auth.service';
-import { TokenStorageService } from 'src/app/shared/services/token-storage.service';
+import { TokenStorageService } from 'src/app/shared/services/token-storage/token-storage.service';
 import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 
 @Component({

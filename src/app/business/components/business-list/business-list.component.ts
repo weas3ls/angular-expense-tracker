@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
+import { iUser } from 'src/app/auth/models/user';
+import { TokenStorageService } from 'src/app/shared/services/token-storage/token-storage.service';
 import { BusinessNewComponent } from '../business-new/business-new.component';
 import { iBusiness } from '../../models/business';
-import { iUser } from '../../../auth/models/user';
-import { TokenStorageService } from '../../../shared/services/token-storage.service';
 
 @Component({
     selector: 'expense-tracker-business-list',

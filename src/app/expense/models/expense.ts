@@ -3,6 +3,7 @@ export interface Expense {
     type: string;
     subType: string;
     date: Date;
+    dateAdded: Date;
     title: string;
     amount: number;
     mileage?: number;

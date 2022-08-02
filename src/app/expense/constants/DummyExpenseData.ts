@@ -7,6 +7,7 @@ export const dataSource: Expense[] = [
         type: 'Type 1',
         subType: 'Subtype 1',
         date: new Date(),
+        dateAdded: new Date(),
         amount: 561,
         description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde ipsa sed, velit ducimus veritatis, ad nemo atque aperiam non facilis porro dicta. Eum modi ipsa a at dicta debitis quas.',
@@ -18,6 +19,7 @@ export const dataSource: Expense[] = [
         type: 'Type 2',
         subType: 'Subtype 2',
         date: new Date(),
+        dateAdded: new Date(),
         amount: 562,
         description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde ipsa sed, velit ducimus veritatis, ad nemo atque aperiam non facilis porro dicta. Eum modi ipsa a at dicta debitis quas.',
@@ -29,6 +31,7 @@ export const dataSource: Expense[] = [
         type: 'Type 3',
         subType: 'Subtype 3',
         date: new Date(),
+        dateAdded: new Date(),
         amount: 563,
         description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde ipsa sed, velit ducimus veritatis, ad nemo atque aperiam non facilis porro dicta. Eum modi ipsa a at dicta debitis quas.',
@@ -40,6 +43,7 @@ export const dataSource: Expense[] = [
         type: 'Type 4',
         subType: 'Subtype 4',
         date: new Date(),
+        dateAdded: new Date(),
         amount: 564,
         description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde ipsa sed, velit ducimus veritatis, ad nemo atque aperiam non facilis porro dicta. Eum modi ipsa a at dicta debitis quas.',
@@ -51,6 +55,7 @@ export const dataSource: Expense[] = [
         type: 'Type 5',
         subType: 'Subtype 5',
         date: new Date(),
+        dateAdded: new Date(),
         amount: 565,
         description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde ipsa sed, velit ducimus veritatis, ad nemo atque aperiam non facilis porro dicta. Eum modi ipsa a at dicta debitis quas.',
@@ -62,6 +67,7 @@ export const dataSource: Expense[] = [
         type: 'Type 6',
         subType: 'Subtype 6',
         date: new Date(),
+        dateAdded: new Date(),
         amount: 566,
         description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde ipsa sed, velit ducimus veritatis, ad nemo atque aperiam non facilis porro dicta. Eum modi ipsa a at dicta debitis quas.',
@@ -73,6 +79,7 @@ export const dataSource: Expense[] = [
         type: 'Type 7',
         subType: 'Subtype 7',
         date: new Date(),
+        dateAdded: new Date(),
         amount: 567,
         description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde ipsa sed, velit ducimus veritatis, ad nemo atque aperiam non facilis porro dicta. Eum modi ipsa a at dicta debitis quas.',
@@ -84,6 +91,7 @@ export const dataSource: Expense[] = [
         type: 'Type 8',
         subType: 'Subtype 8',
         date: new Date(),
+        dateAdded: new Date(),
         amount: 568,
         description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde ipsa sed, velit ducimus veritatis, ad nemo atque aperiam non facilis porro dicta. Eum modi ipsa a at dicta debitis quas.',
@@ -95,6 +103,7 @@ export const dataSource: Expense[] = [
         type: 'Type 9',
         subType: 'Subtype 9',
         date: new Date(),
+        dateAdded: new Date(),
         amount: 569,
         description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde ipsa sed, velit ducimus veritatis, ad nemo atque aperiam non facilis porro dicta. Eum modi ipsa a at dicta debitis quas.',
@@ -106,6 +115,7 @@ export const dataSource: Expense[] = [
         type: 'Type 10',
         subType: 'Subtype 10',
         date: new Date(),
+        dateAdded: new Date(),
         amount: 5610,
         description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde ipsa sed, velit ducimus veritatis, ad nemo atque aperiam non facilis porro dicta. Eum modi ipsa a at dicta debitis quas.',
@@ -117,6 +127,7 @@ export const dataSource: Expense[] = [
         type: 'Type 11',
         subType: 'Subtype 11',
         date: new Date(),
+        dateAdded: new Date(),
         amount: 5611,
         description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde ipsa sed, velit ducimus veritatis, ad nemo atque aperiam non facilis porro dicta. Eum modi ipsa a at dicta debitis quas.',

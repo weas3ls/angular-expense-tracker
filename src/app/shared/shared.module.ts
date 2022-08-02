@@ -9,11 +9,12 @@ import { MdbNotificationModule } from 'mdb-angular-ui-kit/notification';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { PageTitleComponent } from './components/page-title/page-title.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
 
 @NgModule({
-    declarations: [HeaderComponent, FooterComponent, AlertComponent, TruncatePipe],
+    declarations: [HeaderComponent, FooterComponent, AlertComponent, TruncatePipe, PageTitleComponent],
     imports: [CommonModule, RouterModule, MdbCollapseModule, MdbDropdownModule, MdbNotificationModule],
-    exports: [HeaderComponent, FooterComponent, TruncatePipe],
+    exports: [HeaderComponent, FooterComponent, PageTitleComponent, TruncatePipe],
 })
 export class SharedModule {}

@@ -10,6 +10,8 @@ import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 
+import { SharedModule } from '../shared/shared.module';
+
 import { BusinessListComponent } from './components/business-list/business-list.component';
 import { BusinessNewComponent } from './components/business-new/business-new.component';
 import { BusinessFormComponent } from './components/business-form/business-form.component';
@@ -52,6 +54,7 @@ const routes: Routes = [
     ],
     imports: [
         CommonModule,
+        SharedModule,
         ReactiveFormsModule,
         RouterModule.forChild(routes),
         MdbAutocompleteModule,

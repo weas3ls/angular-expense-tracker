@@ -6,4 +6,5 @@ export interface iUser {
     slug: string;
     token: string;
     roles: string[];
+    dateCreated: Date;
 }
