@@ -1,6 +1,6 @@
 <form [formGroup]="businessForm" (ngSubmit)="onSubmit()">
     <div class="row">
-        <div class="col-12 col-md-6 col-lg-9" [ngClass]="url.endsWith('/edit') ? 'mb-5' : ''">
+        <div class="col-12 col-md-6 col-lg-9 mb-5">
             <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
                 <input mdbValidate mdbInput type="text" class="form-control" formControlName="name" required />
                 <label for="name" class="form-label required" mdbLabel>Business Name</label>
@@ -12,7 +12,7 @@
                 </mdb-success>
             </mdb-form-control>
         </div>
-        <div class="col-12 col-md-6 col-lg-3" [ngClass]="url.endsWith('/edit') ? 'mb-5' : ''">
+        <div class="col-12 col-md-6 col-lg-3 mb-5">
             <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
                 <input mdbValidate mdbInput type="number" class="form-control" formControlName="ein" />
                 <label for="ein" class="form-label required" mdbLabel>Business EIN</label>
@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12 col-md-6 col-lg-4" [ngClass]="url.endsWith('/edit') ? 'mb-5' : ''">
+        <div class="col-12 col-md-6 col-lg-4 mb-5">
             <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
                 <input
                     mdbValidate
@@ -53,7 +53,7 @@
                 </mdb-success>
             </mdb-form-control>
         </div>
-        <div class="col-12 col-md-6 col-lg-3" [ngClass]="url.endsWith('/edit') ? 'mb-5' : ''">
+        <div class="col-12 col-md-6 col-lg-3 mb-5">
             <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
                 <input
                     mdbValidate
@@ -78,7 +78,7 @@
                 <div *ngIf="notFound" class="autocomplete-no-results">No results found</div>
             </mdb-autocomplete>
         </div>
-        <div class="col-12 col-lg-5" [ngClass]="url.endsWith('/edit') ? 'mb-5' : ''">
+        <div class="col-12 col-lg-5 mb-5">
             <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
                 <input mdbInput type="url" class="form-control" formControlName="website" />
                 <label mdbLabel for="website" class="form-label">Business Website</label>

@@ -1,5 +1,5 @@
 <form [formGroup]="expenseForm">
-    <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white mb-5' : ''">
+    <mdb-form-control class="mb-5" [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
         <input
             mdbValidate
             mdbInput
@@ -33,7 +33,7 @@
     </mdb-autocomplete>
 
     <div class="row">
-        <div class="col-12 col-md-7 col-lg-8" [ngClass]="url.endsWith('/edit') ? 'mb-5' : ''">
+        <div class="col-12 col-md-7 col-lg-8 mb-5">
             <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
                 <input mdbValidate mdbInput type="text" class="form-control" formControlName="title" />
                 <label mdbLabel for="title" class="form-label required">Title</label>
@@ -45,7 +45,7 @@
                 </mdb-success>
             </mdb-form-control>
         </div>
-        <div class="col-12 col-md-5 col-lg-4" [ngClass]="url.endsWith('/edit') ? 'mb-5' : ''">
+        <div class="col-12 col-md-5 col-lg-4 mb-5">
             <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
                 <input
                     mdbValidate
@@ -75,8 +75,9 @@
         </div>
     </div>
     <mdb-form-control
+        class="mb-5"
         *ngIf="f['type'].value !== 'Car Mileage'; else elseBlock"
-        [ngClass]="url.endsWith('/edit') ? 'form-white mb-5' : ''"
+        [ngClass]="url.endsWith('/edit') ? 'form-white' : ''"
     >
         <input
             mdbValidate
@@ -96,7 +97,7 @@
     </mdb-form-control>
     <ng-template #elseBlock>
         <div class="row">
-            <div class="col-12 col-lg-8" [ngClass]="url.endsWith('/edit') ? 'mb-5' : ''">
+            <div class="col-12 col-lg-8 mb-5 mb-5">
                 <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
                     <input
                         mdbValidate
@@ -115,14 +116,14 @@
                     </mdb-success>
                 </mdb-form-control>
             </div>
-            <div class="col-12 col-lg-4 d-flex algin-items-center" [ngClass]="url.endsWith('/edit') ? 'mb-5' : ''">
+            <div class="col-12 col-lg-4 d-flex algin-items-center mb-5">
                 <p [ngClass]="url.endsWith('/edit') ? 'text-white' : 'text-black-50'" class="my-auto">
                     * 0.56/mile = {{ mileage_cost | currency }}
                 </p>
             </div>
         </div>
     </ng-template>
-    <mdb-form-control [ngClass]="url.endsWith('/edit') ? 'form-white mb-5' : ''">
+    <mdb-form-control class="mb-5" [ngClass]="url.endsWith('/edit') ? 'form-white' : ''">
         <textarea mdbValidate mdbInput class="form-control" formControlName="description" rows="3"></textarea>
         <label mdbLabel for="description" class="form-label required">Description</label>
         <mdb-error *ngIf="f['description'].invalid && (f['description'].dirty || f['description'].touched)">
