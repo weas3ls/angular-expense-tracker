@@ -10,7 +10,7 @@
     />
     <label mdbLabel for="search-input" class="form-label">Search</label>
 </mdb-form-control>
-<div class="datatable mt-4">
+<div class="datatable table-responsive bg-dark dark text-white border-white mt-4">
     <table
         class="table datatable-table align-middle"
         mdbTable
@@ -25,14 +25,14 @@
         <caption class="text-white py-1">
             All expenses for this business
         </caption>
-        <thead class="datatable-header">
+        <thead class="datatable-header text-white">
             <tr>
                 <th *ngFor="let header of headers" [mdbTableSortHeader]="header" scope="col">
                     {{ header }}
                 </th>
             </tr>
         </thead>
-        <tbody class="datatable-body">
+        <tbody class="datatable-body text-white">
             <tr *ngFor="let data of table.data" scope="row" class="position-relative">
                 <td>
                     <a class="text-white stretched-link" [routerLink]="[data.id]">{{ data.title }}</a>

@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';
 @import '~@fortawesome/fontawesome-free/scss/brands.scss';
 @import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
+
 html,
 body {
     background: #414040 !important;
@@ -12,7 +12,6 @@ body {
     flex-direction: column;
     height: 100%;
     margin: 0;
-    // color: white;
 }
 
 main {
@@ -20,23 +19,20 @@ main {
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-
 body::-webkit-scrollbar {
     width: 0;
     background: transparent;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-
 body {
-    -ms-overflow-style: none;
     /* IE and Edge */
-    scrollbar-width: none;
+    -ms-overflow-style: none;
     /* Firefox */
+    scrollbar-width: none;
 }
 
 /* autofill color */
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -54,12 +50,8 @@ input:-webkit-autofill:active {
     color: white;
 }
 
-.select-input.form-control[readonly]:not([disabled]) {
+.datatable .select-input.form-control[readonly]:not([disabled]) {
     color: white;
-}
-
-.modal-body .select-input.form-control[readonly]:not([disabled]) {
-    color: #000;
 }
 
 .datatable-sort-icon.active {
